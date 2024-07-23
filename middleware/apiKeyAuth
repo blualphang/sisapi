@@ -12,6 +12,6 @@ module.exports = function apiKeyAuth(req, res, next) {
     if (apiKey !== validApiKey) {
         return res.status(401).json({ error: 'Invalid API key' });
     }
-
+//from enjay
     next();
 };
