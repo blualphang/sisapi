@@ -1,0 +1,1148 @@
+USE [hillrange]
+GO
+/****** Object:  Table [dbo].[CAResults]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CAResults](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[SessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[ClassAverAge_Age] [nvarchar](50) NULL,
+	[NoInClass] [nvarchar](50) NULL,
+	[CA1TotalSCore] [float] NULL,
+	[CA2TotalSCore] [float] NULL,
+	[CA1AverAge_SCore] [float] NULL,
+	[CA2AverAge_SCore] [float] NULL,
+	[CA1ClassAverAge_SCore] [float] NULL,
+	[CA2ClassAverAge_SCore] [float] NULL,
+	[CA1PositionInClass] [nvarchar](50) NULL,
+	[CA2PositionInClass] [nvarchar](50) NULL,
+	[NoInYearGroup] [int] NULL,
+	[CA1PositionOverall] [nvarchar](50) NULL,
+	[CA2PositionOverall] [nvarchar](50) NULL,
+	[Age] [nvarchar](50) NULL,
+	[FormTeacherName] [nvarchar](100) NULL,
+	[DateGenerated] [datetime] NULL,
+	[Deleted] [bit] NULL,
+	[StudentName] [nvarchar](100) NOT NULL,
+	[CA1OverallAverAge_SCore] [float] NULL,
+	[CA2OverallAverAge_SCore] [float] NULL,
+	[StudentLocked] [bit] NULL,
+ CONSTRAINT [PK_CAResults] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[ClassCategorys]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ClassCategorys](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[ClassCategoryName] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+	[ClassCategoryCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_ClassCategorys] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Classs]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Classs](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[ClassName] [nvarchar](50) NULL,
+	[ClassTypeId] [nvarchar](50) NOT NULL,
+	[TeacherCode] [nvarchar](50) NOT NULL,
+	[MinimiumSubjects] [int] NULL,
+	[Deleted] [bit] NULL,
+	[ClassCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Classs] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Classss]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Classss](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[ClassName] [nvarchar](50) NULL,
+	[ClassTypeId] [nvarchar](50) NOT NULL,
+	[TeacherCode] [nvarchar](50) NOT NULL,
+	[MinimiumSubjects] [int] NULL,
+	[Deleted] [bit] NULL,
+	[ClassCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Classss] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[ClassTypes]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ClassTypes](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[ClassTypeName] [nvarchar](50) NULL,
+	[ClassCategoryId] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+	[ClassTypeCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_ClassTypes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Countrys]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Countrys](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[CountryCode] [nvarchar](50) NOT NULL,
+	[CountryName] [nvarchar](50) NULL,
+	[CountryImage] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_Countrys] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Genders]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Genders](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[GenderCode] [nvarchar](50) NOT NULL,
+	[GenderName] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_Genders] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Lgas]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Lgas](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[LgaCode] [int] NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[StateCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Lgas] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[ParentAccounts]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ParentAccounts](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[FatherPhoneNumber] [nvarchar](50) NULL,
+	[FatherEmailAddress] [nvarchar](50) NULL,
+	[FatherPassword] [nvarchar](200) NULL,
+	[FatherPasswordKey] [nvarchar](200) NULL,
+	[FatherChangePassword] [bit] NULL,
+	[FatherCode] [nvarchar](50) NULL,
+	[MotherCode] [nvarchar](50) NULL,
+	[Status] [nvarchar](50) NULL,
+	[MotherPhoneNumber] [nvarchar](50) NULL,
+	[MotherEmailAddress] [nvarchar](50) NULL,
+	[MotherPassword] [nvarchar](200) NULL,
+	[MotherPasswordKey] [nvarchar](200) NULL,
+	[MotherChangePassword] [bit] NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_ParentAccounts] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[ParentInformations]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ParentInformations](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[EnrollmentPinCode] [nvarchar](50) NULL,
+	[FatherCode] [nvarchar](50) NULL,
+	[FatherTitleId] [nvarchar](50) NULL,
+	[FatherLastName] [nvarchar](50) NULL,
+	[FatherFirstName] [nvarchar](50) NULL,
+	[FatherMiddleName] [nvarchar](50) NULL,
+	[FatherCountryCode] [nvarchar](50) NULL,
+	[FatherStateCode] [nvarchar](50) NULL,
+	[FatherLgaCode] [int] NULL,
+	[FatherOccupation] [nvarchar](50) NULL,
+	[FatherEmployer] [nvarchar](50) NULL,
+	[FatherWorkAddress] [nvarchar](50) NULL,
+	[FatherWorkPhoneNumber] [nvarchar](50) NULL,
+	[FatherMobilePhoneNumber] [nvarchar](50) NULL,
+	[FatherEmailAddress] [nvarchar](50) NULL,
+	[MotherCode] [nvarchar](50) NULL,
+	[MotherTitleId] [nvarchar](50) NULL,
+	[MotherLastName] [nvarchar](50) NULL,
+	[MotherFirstName] [nvarchar](50) NULL,
+	[MotherMiddleName] [nvarchar](50) NULL,
+	[MotherCountryCode] [nvarchar](50) NULL,
+	[MotherStateCode] [nvarchar](50) NULL,
+	[MotherLgaCode] [int] NULL,
+	[MotherOccupation] [nvarchar](50) NULL,
+	[MotherEmployer] [nvarchar](50) NULL,
+	[MotherWorkAddress] [nvarchar](50) NULL,
+	[MotherWorkPhoneNumber] [nvarchar](50) NULL,
+	[MotherMobilePhoneNumber] [nvarchar](50) NULL,
+	[MotherEmailAddress] [nvarchar](50) NULL,
+	[GuardianRelationship] [nvarchar](50) NULL,
+	[HomeAddress] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+	[ClassId] [nvarchar](50) NULL,
+	[StudentName] [nvarchar](50) NULL,
+ CONSTRAINT [PK_ParentInformations] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrimaryClasss]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrimaryClasss](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[ClassName] [nvarchar](50) NULL,
+	[ClassTypeId] [nvarchar](50) NULL,
+	[TeacherCode] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_PrimaryClasss] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrimaryClassTypes]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrimaryClassTypes](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[ClassTypeName] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_PrimaryClassTypes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrimarySchoolAssessmentExams]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrimarySchoolAssessmentExams](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[FirstHalfMaxScore] [float] NULL,
+	[SecondHalfMaxScore] [float] NULL,
+	[FinalHalfMaxScore] [float] NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_PrimarySchoolAssessmentExams] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrimaryStudentActivitiess]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrimaryStudentActivitiess](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[TimesAttendedDispensary] [int] NULL,
+	[TimesAttendedHospitalClinic] [int] NULL,
+	[TimeLate] [int] NULL,
+	[TimeAbsent] [int] NULL,
+	[LengthOfProlongedAbscence] [nvarchar](50) NULL,
+	[CauseOfProlongedAbscence] [nvarchar](200) NULL,
+	[TotalNumberOfHoursOfDetention] [int] NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_PrimaryStudentActivitiess] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrimaryStudentAssessments]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrimaryStudentAssessments](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[SubjectCode] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[FirstHalf] [float] NULL,
+	[SecondHalf] [float] NULL,
+	[FinalHalf] [float] NULL,
+	[Comments] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_PrimaryStudentAssessments] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrimaryStudentAttendances]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrimaryStudentAttendances](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[NoDaysPresent] [int] NULL,
+	[TotalTermDays] [int] NULL,
+	[Active] [bit] NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_PrimaryStudentAttendances] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrimaryStudentBehaviourRatings]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrimaryStudentBehaviourRatings](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[Punctuality] [nvarchar](50) NULL,
+	[Neatness] [nvarchar](50) NULL,
+	[Politeness] [nvarchar](50) NULL,
+	[Honesty] [nvarchar](50) NULL,
+	[CooperationWithOthers] [nvarchar](50) NULL,
+	[Leadership] [nvarchar](50) NULL,
+	[EmotionalStability] [nvarchar](50) NULL,
+	[Health] [nvarchar](50) NULL,
+	[AttitudeToSchoolWork] [nvarchar](50) NULL,
+	[Perseverance] [nvarchar](50) NULL,
+	[Attentiveness] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_PrimaryStudentBehaviourRatings] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrimaryStudentSkillRatings]    Script Date: 23/07/2024 13:18:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrimaryStudentSkillRatings](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[Handwriting] [nvarchar](50) NULL,
+	[VerbalFluency] [nvarchar](50) NULL,
+	[Games] [nvarchar](50) NULL,
+	[Sports] [nvarchar](50) NULL,
+	[HandlingTools] [nvarchar](50) NULL,
+	[DrawingAndPainting] [nvarchar](50) NULL,
+	[MusicalSkills] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_PrimaryStudentSkillRatings] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrimaryStudentSubjects]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrimaryStudentSubjects](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[SubjectCode] [nvarchar](50) NOT NULL,
+	[Status] [nvarchar](50) NULL,
+	[Position] [int] NULL,
+	[PositionName] [nvarchar](50) NULL,
+	[SCore] [float] NULL,
+	[ClassAverAge] [float] NULL,
+	[Comments] [nvarchar](50) NULL,
+	[Active] [bit] NULL,
+	[DenyMessAge] [nvarchar](2000) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_PrimaryStudentSubjects] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrimarySubjects]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrimarySubjects](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[SubjectName] [nvarchar](50) NULL,
+	[SubjectShortName] [nvarchar](50) NULL,
+	[ClassTypeId] [nvarchar](50) NULL,
+	[MustPass] [bit] NULL,
+	[AppearOrder] [int] NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_PrimarySubjects] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrimaryTermResults]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrimaryTermResults](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[ClassAverAge_Age] [nvarchar](50) NULL,
+	[NoInClass] [nvarchar](50) NULL,
+	[TotalSCore] [float] NULL,
+	[AverAge_SCore] [float] NULL,
+	[ClassAverAge_SCore] [float] NULL,
+	[PositionInClass] [nvarchar](50) NULL,
+	[Age] [nvarchar](50) NULL,
+	[TeacherComment] [nvarchar](100) NULL,
+	[HeadOfYearComment] [nvarchar](100) NULL,
+	[TeacherInitials] [nvarchar](50) NULL,
+	[HeadOfYearInitials] [nvarchar](50) NULL,
+	[TeacherDate] [datetime] NULL,
+	[HeadOfYearDate] [datetime] NULL,
+	[NextTermBegins] [datetime] NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_PrimaryTermResults] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Roles]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Roles](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[RoleId] [nvarchar](50) NOT NULL,
+	[RoleName] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_Roles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[SchoolAssessmentExams]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SchoolAssessmentExams](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[CA1] [bit] NULL,
+	[CA1MaxScore] [float] NULL,
+	[CA2] [bit] NULL,
+	[CA2MaxScore] [float] NULL,
+	[CA3] [bit] NULL,
+	[CA3MaxScore] [float] NULL,
+	[CA4] [bit] NULL,
+	[CA4MaxScore] [float] NULL,
+	[CA5] [bit] NULL,
+	[CA5MaxScore] [float] NULL,
+	[Exam] [float] NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_SchoolAssessmentExams] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[SchoolCourseAssessments]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SchoolCourseAssessments](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[CourseId] [nvarchar](50) NOT NULL,
+	[CA1] [bit] NULL,
+	[CA1Name] [nvarchar](50) NULL,
+	[CA1MaxScore] [float] NULL,
+	[CA2] [bit] NULL,
+	[CA2Name] [nvarchar](50) NULL,
+	[CA2MaxScore] [float] NULL,
+	[CA3] [bit] NULL,
+	[CA3Name] [nvarchar](50) NULL,
+	[CA3MaxScore] [float] NULL,
+	[CA4] [bit] NULL,
+	[CA4Name] [nvarchar](50) NULL,
+	[CA4MaxScore] [float] NULL,
+	[CA5] [bit] NULL,
+	[CA5Name] [nvarchar](50) NULL,
+	[CA5MaxScore] [float] NULL,
+	[DepartmentId] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_SchoolCourseAssessments] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Schools]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Schools](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolName] [nvarchar](100) NULL,
+	[SchoolShortName] [nvarchar](10) NULL,
+	[SchoolTypeId] [nvarchar](50) NULL,
+	[Address] [nvarchar](100) NULL,
+	[City] [nvarchar](50) NULL,
+	[StateCode] [nvarchar](10) NULL,
+	[PhoneNumber1] [nvarchar](50) NULL,
+	[PhoneNumber2] [nvarchar](50) NULL,
+	[EmailAddress] [nvarchar](50) NULL,
+	[Motto] [nvarchar](50) NULL,
+	[SchoolLogo] [varbinary](max) NULL,
+	[ApprovalCertificate] [varbinary](max) NULL,
+	[AccessCode] [nvarchar](50) NULL,
+	[KeyCode] [nvarchar](50) NULL,
+	[Principal] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[EnrollmentPinDocument] [varbinary](max) NULL,
+	[TermPaymentPinDocument] [varbinary](max) NULL,
+	[Deleted] [bit] NULL,
+	[SchoolLogoPath] [nvarchar](300) NULL,
+	[SchoolCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Schools] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[SchoolTypes]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SchoolTypes](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolTypeId] [nvarchar](50) NOT NULL,
+	[SchoolTypeName] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_SchoolTypes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[SessionTerms]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SessionTerms](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[ProcessCA] [bit] NULL,
+	[PublishCA] [bit] NULL,
+	[ProcessBroadSheet] [bit] NULL,
+	[PublishBroadSheet] [bit] NULL,
+	[ProcessResult] [bit] NULL,
+	[PublishResult] [bit] NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_SessionTerms] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[SSessions]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SSessions](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[SSessionName] [nvarchar](50) NULL,
+	[Active] [bit] NULL,
+	[Admission] [bit] NULL,
+	[Deleted] [bit] NULL,
+	[SessionCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_SSessions] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[States]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[States](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[StateCode] [nvarchar](50) NOT NULL,
+	[StateName] [nvarchar](50) NULL,
+	[CountryCode] [nvarchar](50) NULL,
+	[Image] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_States] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[StudentAccounts]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentAccounts](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[EmailAddress] [nvarchar](50) NULL,
+	[Password] [nvarchar](50) NULL,
+	[ChangePassword] [bit] NULL,
+	[Status] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+	[PasswordKey] [nvarchar](100) NULL,
+ CONSTRAINT [PK_StudentAccounts] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[StudentAssessments]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentAssessments](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[SubjectCode] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[CA1] [float] NULL,
+	[CA2] [float] NULL,
+	[CA3] [float] NULL,
+	[CA4] [float] NULL,
+	[CA5] [float] NULL,
+	[Exam] [float] NULL,
+	[Total] [float] NULL,
+	[Comments] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+	[StudentName] [nvarchar](100) NULL,
+	[CA1SubjectPosition] [nvarchar](50) NULL,
+	[CA2SubjectPosition] [nvarchar](50) NULL,
+	[CA1SubjectPositionOverall] [nvarchar](50) NULL,
+	[CA2SubjectPositionOverall] [nvarchar](50) NULL,
+	[GradePosition] [nvarchar](50) NULL,
+	[SubjectAverage] [float] NULL,
+	[FinalPositionInSubject] [nvarchar](50) NULL,
+	[OverallFinalPositionInSubject] [nvarchar](50) NULL,
+	[ActiveSubject] [bit] NULL,
+	[SubjectApproved] [bit] NULL,
+	[ApprovedBy] [nvarchar](50) NULL,
+	[TeacherCode] [nvarchar](50) NULL,
+	[ClassTypeId] [nvarchar](50) NULL,
+ CONSTRAINT [PK_StudentAssessments] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[StudentBehaviourRatings]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentBehaviourRatings](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[Honesty] [nvarchar](50) NULL,
+	[Dressing] [nvarchar](50) NULL,
+	[Politeness] [nvarchar](50) NULL,
+	[Obidience] [nvarchar](50) NULL,
+	[Punctuality] [nvarchar](50) NULL,
+	[Orderliness] [nvarchar](50) NULL,
+	[Friendliness] [nvarchar](50) NULL,
+	[DiligenceAtWork] [nvarchar](50) NULL,
+	[AttentivenessInClass] [nvarchar](50) NULL,
+	[RelationshipWithOthers] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+	[StudentName] [nvarchar](100) NULL,
+ CONSTRAINT [PK_StudentBehaviourRatings] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[StudentBios]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentBios](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[EnrollmentPinCode] [nvarchar](50) NULL,
+	[LastName] [nvarchar](50) NULL,
+	[FirstName] [nvarchar](50) NULL,
+	[MiddleName] [nvarchar](50) NULL,
+	[DateOfBirth] [datetimeoffset](7) NULL,
+	[GenderCode] [nvarchar](50) NULL,
+	[CountryCode] [nvarchar](50) NULL,
+	[StateCode] [nvarchar](50) NULL,
+	[LgaCode] [int] NULL,
+	[HomeTown] [nvarchar](50) NULL,
+	[ReligionCode] [nvarchar](50) NULL,
+	[MobilePhoneNo] [nvarchar](50) NULL,
+	[EmailAddress] [nvarchar](50) NULL,
+	[ExpectedClassTypeId] [nvarchar](50) NULL,
+	[ExpectedClassId] [nvarchar](50) NULL,
+	[ClassTypeId] [nvarchar](50) NULL,
+	[ClassId] [nvarchar](50) NULL,
+	[YearOfAdmission] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+	[Advisor] [nvarchar](50) NULL,
+	[Address] [nvarchar](200) NULL,
+	[Places] [nvarchar](50) NULL,
+	[FormerSchool] [nvarchar](200) NULL,
+	[TeamCode] [nvarchar](50) NULL,
+	[Remarks] [nvarchar](50) NULL,
+	[StudentPhotoPath] [nvarchar](300) NULL,
+	[StudentId] [nvarchar](50) NULL,
+	[StudentStatus] [nvarchar](50) NULL,
+	[Graduated] [bit] NULL,
+ CONSTRAINT [PK_StudentBios] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[StudentSkillRatings]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentSkillRatings](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[Handwriting] [nvarchar](50) NULL,
+	[ClubSocieties] [nvarchar](50) NULL,
+	[Fluency] [nvarchar](50) NULL,
+	[SportingActivities] [nvarchar](50) NULL,
+	[ClassSchoolChores] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+	[StudentName] [nvarchar](100) NULL,
+ CONSTRAINT [PK_StudentSkillRatings] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[StudentSubjects]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentSubjects](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[SSessionId] [nvarchar](50) NOT NULL,
+	[TermId] [nvarchar](50) NOT NULL,
+	[StudentId] [nvarchar](50) NOT NULL,
+	[StudentIdNo] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[SubjectCode] [nvarchar](50) NOT NULL,
+	[Status] [nvarchar](50) NULL,
+	[Position] [int] NULL,
+	[PositionName] [nvarchar](50) NULL,
+	[SCore] [float] NULL,
+	[GradeCode] [nvarchar](50) NULL,
+	[ClassAverAge] [float] NULL,
+	[Comments] [nvarchar](50) NULL,
+	[Active] [bit] NULL,
+	[DenyMessAge] [nvarchar](2000) NULL,
+	[Deleted] [bit] NULL,
+	[StudentName] [nvarchar](100) NULL,
+ CONSTRAINT [PK_StudentSubjects] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Subjects]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Subjects](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[SubjectName] [nvarchar](50) NULL,
+	[SubjectShortName] [nvarchar](50) NULL,
+	[ClassCategoryId] [nvarchar](50) NOT NULL,
+	[Core] [bit] NULL,
+	[MustPass] [bit] NULL,
+	[AppearOrder] [int] NULL,
+	[Deleted] [bit] NULL,
+	[SubjectCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Subjects] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Teachers]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Teachers](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[TitleId] [nvarchar](50) NULL,
+	[LastName] [nvarchar](50) NULL,
+	[FirstName] [nvarchar](50) NULL,
+	[MiddleName] [nvarchar](50) NULL,
+	[GenderCode] [nvarchar](50) NULL,
+	[MobilePhoneNumber] [nvarchar](50) NULL,
+	[EmailAddress] [nvarchar](50) NOT NULL,
+	[JobTitle] [nvarchar](50) NULL,
+	[RoleId] [nvarchar](50) NULL,
+	[Initials] [nvarchar](50) NULL,
+	[Password] [nvarchar](50) NULL,
+	[ChangePassword] [bit] NULL,
+	[Status] [nvarchar](50) NULL,
+	[ReligionCode] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+	[PasswordKey] [nvarchar](100) NULL,
+	[TeacherCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Teachers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[TeacherSubjectClasss]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TeacherSubjectClasss](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[ClassId] [nvarchar](50) NOT NULL,
+	[TeacherCode] [nvarchar](50) NOT NULL,
+	[SubjectCode] [nvarchar](50) NOT NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_TeacherSubjectClasss] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Teams]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Teams](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[TeamName] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+	[TeamCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Teams] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Terms]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Terms](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[SchoolId] [nvarchar](50) NOT NULL,
+	[TermName] [nvarchar](50) NULL,
+	[StartDate] [datetimeoffset](7) NULL,
+	[ClosingDate] [datetimeoffset](7) NULL,
+	[ResumeDate] [datetimeoffset](7) NULL,
+	[Active] [bit] NULL,
+	[Deleted] [bit] NULL,
+	[SSessionId] [nvarchar](50) NULL,
+	[TermCode] [nvarchar](50) NULL,
+	[TotalTermDays] [int] NULL,
+	[PublishCA1] [bit] NULL,
+	[PublishCA2] [bit] NULL,
+	[PublishResult] [bit] NULL,
+ CONSTRAINT [PK_Terms] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Titles]    Script Date: 23/07/2024 13:18:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Titles](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Version] [timestamp] NULL,
+	[UpdatedAt] [datetimeoffset](7) NOT NULL,
+	[TitleId] [nvarchar](50) NOT NULL,
+	[TitleName] [nvarchar](50) NULL,
+	[Deleted] [bit] NULL,
+ CONSTRAINT [PK_Titles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
