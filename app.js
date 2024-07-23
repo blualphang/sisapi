@@ -6,7 +6,7 @@ const cors = require('cors');
 const apiLgaRoutes = require('./routes/apiLga');
 const apiStateRoutes = require('./routes/apiState');
 const apiCaResultsRoutes = require('./routes/apiCaResults');
-const apiClassCategoryRoutes = requir("./routes/apiClassCategory")
+const apiClassCategoryRoutes = require("./routes/apiClassCategory")
 
 //const apiKeyAuth = require('./middleware/apiKeyAuth');
 require('dotenv').config();
