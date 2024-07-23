@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const apiLgaRoutes = require('./routes/apiLga');
 const apiStateRoutes = require('./routes/apiState');
-//const apiCaResultsRoutes = require('./routes/apiCaResults');
+const apiCaResultsRoutes = require('./routes/apiCaResults');
 const apiClassCategoryRoutes = require("./routes/apiClassCategorys")
 
 //const apiKeyAuth = require('./middleware/apiKeyAuth');
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 // Routes
 app.use('/api', apiLgaRoutes);
 app.use('/api', apiStateRoutes);
-//app.use("/api", apiCaResultsRoutes)
+app.use("/api", apiCaResultsRoutes)
 app.use("/api", apiClassCategoryRoutes)
 
 const port = process.env.PORT || 3000;
