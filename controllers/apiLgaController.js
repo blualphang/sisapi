@@ -7,7 +7,7 @@ exports.getLgas = (req, res) => {
         }
         res.json(results);
     });
-};git
+};
 
 exports.createLga = (req, res) => {
     const { name, description } = req.body;

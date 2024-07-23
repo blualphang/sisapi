@@ -12,7 +12,7 @@ exports.getClassCategorys = (req, res) => {
         }
         res.json(results);
     });
-};git
+};
 
 exports.createClassCategorys = (req, res) => {
     const { Id, UpdatedAt, ClassCategoryName,Deleted, ClassCategoryCode  } = req.body;
