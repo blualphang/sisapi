@@ -1,46 +1,73 @@
 const db = require('../config/db');
-// [Id] [uniqueidentifier] NOT NULL,
-// 	[Version] [timestamp] NULL,
-// 	[UpdatedAt] [datetimeoffset](7) NOT NULL,
-// 	[ClassCategoryName] [nvarchar](50) NULL,
-// 	[Deleted] [bit] NULL,
-// 	[ClassCategoryCode] [nvarchar](50) NULL,
-exports.getClassCategorys = (req, res) => {
-    db.query('SELECT * FROM ClassCategorys', (err, results) => {
-        if (err) {
-            return res.status(500).send(err);
-        }
-        res.json(results);
-    });
-};
 
-exports.createClassCategorys = (req, res) => {
-    const { Id, UpdatedAt, ClassCategoryName,Deleted, ClassCategoryCode  } = req.body;
-    db.query('INSERT INTO ClassCategorys (Id, UpdatedAt, ClassCategoryName,Deleted, ClassCategoryCode ) VALUES (?, ?)', [Id, UpdatedAt, ClassCategoryName,Deleted, ClassCategoryCode ], (err, results) => {
-        if (err) {
-            return res.status(500).send(err);
-        }
-        res.json({ id: results.insertId, name, description });
-    });
-};
+async function getClassCategorys(req, res) {
+    try {
+      const result = await sql.query`SELECT * FROM ClassCategorys`;
+      res.json(result.recordset);
+    } catch (err) {
+      res.status(500).send('Error retrieving data from database');
+    }
+  }
+  async function getCaReultsByClassCategoryCode(req, res) {
+    try {
+      const { classCategoryCode } = req.params;
+      const result = await sql.query`SELECT * FROM ClassCategorys WHERE ClassCategoryCode = ${classCategoryCode}`;
+      if (result.recordset.length === 0) {
+        return res.status(404).send('ClassCategory not found');
+      }
+      res.json(result.recordset[0]);
+    } catch (err) {
+      res.status(500).send('Error retrieving data from database');
+    }
+  }
+  
+  
+  
+  async function createClassCategory(req, res) {
+    try {
+        const { Id, UpdatedAt, ClassCategoryName,Deleted, ClassCategoryCode  } = req.body;
+      await sql.query`INSERT INTO ClassCategorys (Id, UpdatedAt, ClassCategoryName,Deleted, ClassCategoryCode ) VALUES (${Id}, ${UpdatedAt},${ClassCategoryName}, ${Deleted}, ${ClassCategoryCode})`
+      res.status(201).send('ClassCategory created successfully');
+    } catch (err) {
+      res.status(500).send('Error creating ClassCategory');
+    }
+  }
+  
+  async function updateClassCategory(req, res) {
+    try {
+      const { Id} = req.params;
+    
+      const { UpdatedAt, ClassCategoryName,Deleted, ClassCategoryCode  } = req.body;
 
-exports.updateClassCategorys = (req, res) => {
-    const { id } = req.params;
-    const { UpdatedAt, ClassCategoryName,Deleted, ClassCategoryCode  } = req.body;
-    db.query('UPDATE ClassCategorys SET UpdatedAt = ?, ClassCategoryName = ?, Deleted = ?, ClassCategoryCode =?    WHERE id = ?', [ UpdatedAt, ClassCategoryName,Deleted, ClassCategoryCode , id], (err) => {
-        if (err) {
-            return res.status(500).send(err);
-        }
-        res.sendStatus(204);
-    });
-};
+     const result = await sql.query`UPDATE ClassCategorys SET UpdatedAt =${UpdatedAt}, ClassCategoryName = ${ClassCategoryName}, Deleted = ${Deleted}, ClassCategoryCode =${ClassCategoryCode}   WHERE id = ${Id}`;
+      if (result.rowsAffected[0] === 0) {
+        return res.status(404).send('ClassCategory not found');
+      }
+      res.send('ClassCategory updated successfully');
+    } catch (err) {
+      res.status(500).send('Error updating ClassCategory');
+    }
+  }
+  
+  async function deleteClassCategory(req, res) {
+    try {
+      const { Id } = req.params;
+      const result = await sql.query`DELETE FROM CaReults WHERE id = ${Id}`;
+      if (result.rowsAffected[0] === 0) {
+        return res.status(404).send('CaReults not found');
+      }
+      res.send('ClassCategory deleted successfully');
+    } catch (err) {
+      res.status(500).send('Error deleting ClassCategory');
+    }
+  }
+  
+  module.exports = {
+    getClassCategorys,
+    getCaReultsByClassCategoryCode,
+      createClassCategory,
+      updateClassCategory,
+    deleteClassCategory
+  };
 
-exports.deleteClassCategorys = (req, res) => {
-    const { id } = req.params;
-    db.query('DELETE FROM ClassCategorys WHERE id = ?', [id], (err) => {
-        if (err) {
-            return res.status(500).send(err);
-        }
-        res.sendStatus(204);
-    });
-};
+
