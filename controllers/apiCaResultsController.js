@@ -13,7 +13,7 @@ async function getCaReults(req, res) {
   }
 }
 
-async function createCaResult(req, res) {
+/* async function createCaResult(req, res) {
     const { Id, UpdatedAt, SchoolId, SessionId, TermId, StudentId, StudentIdNo, ClassId, ClassAverAge_Age, NoInClass, CA1TotalSCore, CA2TotalSCore, CA1AverAge_SCore, CA2AverAge_SCore, CA1ClassAverAge_SCore, CA2ClassAverAge_SCore, CA1PositionInClass, CA2PositionInClass, NoInYearGroup, CA1PositionOverall, CA2PositionOverall, Age, FormTeacherName, DateGenerated, Deleted, StudentName, CA1OverallAverAge_SCore, CA2OverallAverAge_SCore, StudentLocked } = req.body;
     try {
       const result = await sql.query`INSERT INTO CaReults (Id, UpdatedAt, SchoolId, SessionId, TermId, StudentId, StudentIdNo, ClassId, ClassAverAge_Age, NoInClass, CA1TotalSCore, CA2TotalSCore, CA1AverAge_SCore, CA2AverAge_SCore, CA1ClassAverAge_SCore, CA2ClassAverAge_SCore, CA1PositionInClass, CA2PositionInClass, NoInYearGroup, CA1PositionOverall, CA2PositionOverall, Age, FormTeacherName, DateGenerated, Deleted, StudentName, CA1OverallAverAge_SCore, CA2OverallAverAge_SCore, StudentLocked) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, , ?)', [Id, UpdatedAt, SchoolId, SessionId, TermId, StudentId, StudentIdNo, ClassId, ClassAverAge_Age, NoInClass, CA1TotalSCore, CA2TotalSCore, CA1AverAge_SCore, CA2AverAge_SCore, CA1ClassAverAge_SCore, CA2ClassAverAge_SCore, CA1PositionInClass, CA2PositionInClass, NoInYearGroup, CA1PositionOverall, CA2PositionOverall, Age, FormTeacherName, DateGenerated, Deleted, StudentName, CA1OverallAverAge_SCore, CA2OverallAverAge_SCore, StudentLocked];
@@ -36,7 +36,7 @@ async function createCaResult(req, res) {
 
 async function getCaReults(req, res) {
     try {
-      const result = await sql.query`SELECT * FROM CaReults`;
+      const result = await sql.querySELECT * FROM CaReults;
       res.json(result.recordset);
     } catch (err) {
       res.status(500).send('Error retrieving data from database');
@@ -73,3 +73,4 @@ exports.deleteCaReult = (req, res) => {
         res.sendStatus(204);
     });
 };
+ */
