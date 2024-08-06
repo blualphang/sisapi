@@ -1,16 +1,47 @@
-const db = require('../config/db');
 
-exports.getCaReults = (req, res) => {
-    db.query('SELECT * FROM CaReult', (err, results) => {
-        if (err) {
-            return res.status(500).send(err);
-        }
-        res.json(results);
 
-        //test
-    });
-};
 
+//const db = require('../config/db');
+const { sql } = require('../db');
+
+async function getCaReults(req, res) {
+  try {
+    const result = await sql.query`SELECT * FROM CaReults`;
+    res.json(result.recordset);
+  } catch (err) {
+    res.status(500).send('Error retrieving data from database');
+  }
+}
+
+async function createCaResult(req, res) {
+    const { Id, UpdatedAt, SchoolId, SessionId, TermId, StudentId, StudentIdNo, ClassId, ClassAverAge_Age, NoInClass, CA1TotalSCore, CA2TotalSCore, CA1AverAge_SCore, CA2AverAge_SCore, CA1ClassAverAge_SCore, CA2ClassAverAge_SCore, CA1PositionInClass, CA2PositionInClass, NoInYearGroup, CA1PositionOverall, CA2PositionOverall, Age, FormTeacherName, DateGenerated, Deleted, StudentName, CA1OverallAverAge_SCore, CA2OverallAverAge_SCore, StudentLocked } = req.body;
+    try {
+      const result = await sql.query`INSERT INTO CaReults (Id, UpdatedAt, SchoolId, SessionId, TermId, StudentId, StudentIdNo, ClassId, ClassAverAge_Age, NoInClass, CA1TotalSCore, CA2TotalSCore, CA1AverAge_SCore, CA2AverAge_SCore, CA1ClassAverAge_SCore, CA2ClassAverAge_SCore, CA1PositionInClass, CA2PositionInClass, NoInYearGroup, CA1PositionOverall, CA2PositionOverall, Age, FormTeacherName, DateGenerated, Deleted, StudentName, CA1OverallAverAge_SCore, CA2OverallAverAge_SCore, StudentLocked) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, , ?)', [Id, UpdatedAt, SchoolId, SessionId, TermId, StudentId, StudentIdNo, ClassId, ClassAverAge_Age, NoInClass, CA1TotalSCore, CA2TotalSCore, CA1AverAge_SCore, CA2AverAge_SCore, CA1ClassAverAge_SCore, CA2ClassAverAge_SCore, CA1PositionInClass, CA2PositionInClass, NoInYearGroup, CA1PositionOverall, CA2PositionOverall, Age, FormTeacherName, DateGenerated, Deleted, StudentName, CA1OverallAverAge_SCore, CA2OverallAverAge_SCore, StudentLocked];
+      res.json(result.recordset);
+    } catch (err) {
+      res.status(500).send('Error retrieving data from database');
+    }
+  }
+
+// exports.getCaReults = (req, res) => {
+//     db.query('SELECT * FROM CaReults', (err, results) => {
+//         if (err) {
+//             return res.status(500).send(err);
+//         }
+//         res.json(results);
+
+//         //test
+//     });
+// };
+
+async function getCaReults(req, res) {
+    try {
+      const result = await sql.query`SELECT * FROM CaReults`;
+      res.json(result.recordset);
+    } catch (err) {
+      res.status(500).send('Error retrieving data from database');
+    }
+  }
 
 exports.createCaResult = (req, res) => {
     const { Id, UpdatedAt, SchoolId, SessionId, TermId, StudentId, StudentIdNo, ClassId, ClassAverAge_Age, NoInClass, CA1TotalSCore, CA2TotalSCore, CA1AverAge_SCore, CA2AverAge_SCore, CA1ClassAverAge_SCore, CA2ClassAverAge_SCore, CA1PositionInClass, CA2PositionInClass, NoInYearGroup, CA1PositionOverall, CA2PositionOverall, Age, FormTeacherName, DateGenerated, Deleted, StudentName, CA1OverallAverAge_SCore, CA2OverallAverAge_SCore, StudentLocked } = req.body;
