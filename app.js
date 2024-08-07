@@ -4,6 +4,7 @@ const express = require('express');
 const { connectToDatabase } = require('./config/db');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+
 const apiCaResultsRoutes = require('./routes/apiCaResults');
 const apiClassCategoryRoutes = require("./routes/apiClassCategorys")
 
@@ -12,11 +13,26 @@ const port = 3000;
 
 app.use(express.json());
 
+// Middleware
+app.use(cors({
+    origin: `http://localhost:${port}` ,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'x-api-key']
+}));
+app.use(bodyParser.json());
+
+ //const apiKeyAuth = require('./middleware/apiKeyAuth');
+// app.use(apiKeyAuth); // Apply the API key middleware to all routes
+
 // Connect to the database
 connectToDatabase();
 
-// Use the user routes
-app.use('/api', userRoutes);
+
+// // Routes
+
+app.use("/api", apiCaResultsRoutes)
+app.use("/api", apiClassCategoryRoutes)
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

@@ -1,6 +1,6 @@
 
 const sql = require('mssql');
-const config = require('./config/dbConfig.json');
+const config = require('../config/dbConfig.json');
 
 async function connectToDatabase() {
   try {

@@ -8,7 +8,7 @@ async function getClassCategorys(req, res) {
       res.status(500).send('Error retrieving data from database');
     }
   }
-  async function getCaReultsByClassCategoryCode(req, res) {
+  async function getClassCategorysByClassCategoryCode(req, res) {
     try {
       const { classCategoryCode } = req.params;
       const result = await sql.query`SELECT * FROM ClassCategorys WHERE ClassCategoryCode = ${classCategoryCode}`;
@@ -64,7 +64,7 @@ async function getClassCategorys(req, res) {
   
   module.exports = {
     getClassCategorys,
-    getCaReultsByClassCategoryCode,
+    getClassCategorysByClassCategoryCode,
       createClassCategory,
       updateClassCategory,
     deleteClassCategory

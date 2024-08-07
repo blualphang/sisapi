@@ -4,8 +4,8 @@
 
 const express = require('express');
 const {
-    getClassCategory,
-    getClassCategoryByclassCategoryCode,
+    getClassCategorys,
+    getClassCategorysByClassCategoryCode,
     createClassCategory,
     updateClassCategory,
     deleteClassCategory
@@ -13,10 +13,10 @@ const {
 const router = express.Router();
 const apiController = require('../controllers/apiClassCategoryController');
 
-router.get('/classcategory', getClassCategory);
-router.get('/classcategory/:classCategoryCode', getClassCategoryByClassCategoryCode);
+router.get('/classcategory', getClassCategorys);
+router.get('/classcategory/:classCategoryCode', getClassCategorysByClassCategoryCode);
 router.post('/classCategory', createClassCategory);
-router.put('/classCategory/:Id', apiController.updateClassCategory);
-router.delete('/classCategory/:Id', apiController.deleteClassCategory);
+router.put('/classCategory/:Id', updateClassCategory);
+router.delete('/classCategory/:Id', deleteClassCategory);
 
 module.exports = router;
