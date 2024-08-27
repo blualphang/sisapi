@@ -1,4 +1,5 @@
-const db = require('../config/db');
+//const db = require('../config/db');
+const { sql } = require('../config/db');
 
 async function getClassCategorys(req, res) {
     try {
